@@ -66,6 +66,11 @@ class Juego extends Fabrica {
   barajaPedida=[]
   contador=0;
   pedir(){
+    /*Ya el error esta en la siguiente linea por que esta tomando los valores del array
+    de mazo mesclado que es un array con posiciones numericas
+    en segundo lugar estan cogiendo un valor indefinido por que al ser cada elemento un numero
+    y no un objeto el programa no puede acceder al atributo valor
+    */
     this.barajaPedida.push(this.mazoMezclado[this.contador].valor);
         this.contador++;
         //let comp = this.acumulador.find(element => typeof(element) === 'object')
@@ -74,6 +79,13 @@ class Juego extends Fabrica {
   }
   validar() {
     //sumatoria
+    /*
+      Ya el otro error aqui es que primero nueva baraja no existe, asi que el programa no puede leer la
+      funcion reduce de algo que no exite,
+      tambien debe entender las condiciones que se ponen la primera es para saber si el valor es un AS u otra carta 
+      
+      la segunda condicion es verifica si utiliza el 1 o el 11 esto depende de si la suma anterior es 10 o menos
+    */    
     let filtro = this.nuevaBaraja.reduce(
       function(antes, ahora) {
           if (typeof(antes) == 'object') {
